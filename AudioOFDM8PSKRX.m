@@ -1,6 +1,18 @@
  %%discard unwanted samples in audio file OFDM QPSK
- close all
- x=txout;
+% ofdm decoder
+clear all
+close all
+clc
+plotcrap = 1;
+
+FILTERSPEC = '.wav';
+TITLE = 'Pick a Recorded OFDM IQ wav file';
+FILE = 'D:\gnu_radio_work';
+
+[FILENAME, PATHNAME, FILTERINDEX] = uigetfile(FILTERSPEC, TITLE, FILE);
+xstring = [PATHNAME FILENAME];
+
+[x,fswav] = audioread(xstring);
  %x=x(:,1);
  if sum(x(1,:))==1
  x=x';
